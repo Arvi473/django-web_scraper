@@ -1,0 +1,38 @@
+activate myDjangoEnv
+ls
+django-admin startproject mysite
+cd mysite
+django-admin startapp myapp
+pip install requests
+pip install beautifulsoup4
+python manage.py shell
+
+import requests
+
+In [2]: page = requests.get('http://www.google.com')
+
+In [3]: page
+Out[3]: <Response [200]>
+
+In [4]: page.text
+
+from bs4 import BeautifulSoup
+
+In [6]: soup = BeautifulSoup(page.text,'html.parser')
+
+In [7]: soup
+
+In [8]: print(soup.prettify())
+
+In [9]: soup.find_all('a')
+
+In [10]: for link in soup.find_all('a'):
+    ...:     print(link)
+    ...:
+	
+In [11]: for link in soup.find_all('a'):
+    ...:     print(link.get('href'))
+    ...:
+    ...:
+	
+In [12]: exit()
